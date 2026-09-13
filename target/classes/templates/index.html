@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="">
+
+<!-- initialize bootstrap for pretty UI elements -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- initialize the fancier bootstrap buttons and elements -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Header -->
+<head>
+    <title>Placeholder Airlines</title>
+</head>
+
+<!-- Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Eleventh navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Placeholder Airlines</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample09"
+                aria-controls="navbarsExample09"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/index">Home</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/flights">Flights</a></li>
+                <li class="nav-item" th:unless="${session.username}"><a class="nav-link" href="/login">Log In</a></li>
+                <li class="nav-item" th:if="${session.username}"><a class="nav-link" href="/logout">Log Out</a></li>
+                <li class="nav-item" th:unless="${session.username}"><a class="nav-link" href="/register">Register</a></li>
+            </ul>
+            <form role="search">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Body -->
+<body class="bg-primary-subtle">
+
+<!-- Jumbotron header to grab attention: text, circle border, text header, subtitle, in that order. -->
+<!-- Photograph from photoGraph on Pexels.com. -->
+<div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5"
+        style="background-image: url('/assets/photos/pexels-photograph-14158322.jpg');
+                background-size: cover;
+                background-position: right;">
+    <svg class="bi mt-5 mb-3" width="48" height="48" aria-hidden="true">
+        <use xlink:href="#check2-circle"></use>
+    </svg>
+    <h1 class="text-body-emphasis">Placeholder Air</h1>
+    <!-- if the user's logged in, greet them. else, generic message. -->
+    <div th:if="${session.username}">
+        Welcome, <span th:text="${session.username}"></span>!
+    </div>
+    <div th:unless="${session.username}">
+        Take flight to your next big adventure.
+    </div>
+</div>
+
+<!-- Flight search form -->
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <div class="card-body">
+            <form th:action="@{search}" method="post">
+                <!-- Row 1/Card Title -->
+                <div class="row g-3">
+                    <h4>Search Flights</h4>
+                </div>
+                <!-- Row 2 -->
+                <div class="row g-3">
+                    <!-- FIXME: Rubric: starting and ending locations -->
+                    <!-- Easy text fields with little suggestions for now. smart forms may be implemented later -->
+                    <div class="col-md-6">
+                        <label for="departureDefinition" class="form-label">Departure Destination</label>
+                        <input type="text"
+                               class="form-control"
+                               id="departureDefinition"
+                               name="departure"
+                               placeholder="Departing From..."
+                               required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="arrivingDestination" class="form-label">Arrival Destination</label>
+                        <input type="text"
+                               class="form-control"
+                               id="arrivingDestination"
+                               name="arrival"
+                               placeholder="Arriving In..."
+                               required>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="row g-3">
+                    <!-- FIXME: Rubric: Date of Travel. -->
+                    <!-- Leverage bootstrap to handle calendar forms for system consistency -->
+                    <div class="col-md-3">
+                        <label for="departureDate" class="form-label">Departure Date</label>
+                        <input type="date"
+                               class="form-control"
+                               id="departureDate"
+                               name="departureDate"
+                               required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="arrivalDate" class="form-label">Arrival Date</label>
+                        <input type="date"
+                               class="form-control"
+                               id="arrivalDate"
+                               name="arrivalDate"
+                               required>
+                    </div>
+                    <!-- FIXME: Rubric: number of people traveling -->
+                    <!-- Populate a dropdown for easy form control -->
+                    <div class="col-md-5 w-50 mb-3">
+                        <label for="inputTravelers" class="form-label">Travelers</label>
+                        <select
+                                id="inputTravelers"
+                                name="travelers"
+                                class="form-control">
+                            <option value="" disabled selected>Number of Travelers</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="row g-3">
+                    <!-- Search Button: use D-flex to push the button down and keep things level -->
+                    <div class="col-md-4 d-flex align-items-end mt-3">
+                        <button type="submit"
+                                class="btn btn-primary w-100">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

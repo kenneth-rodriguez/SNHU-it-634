@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<users>
+            
+    
+    <user>
+                        
+        
+        <username>admin</username>
+                        
+        
+        <password>root</password>
+                    
+    
+    </user>
+            
+    
+    <user>
+                        
+        
+        <username>kenneth</username>
+                        
+        
+        <password>hunter2</password>
+                    
+    
+    </user>
+            
+    
+    
+    <user>
+                        
+        
+        <username>quickbrownfoxjumps1</username>
+                        
+        
+        <password>overthelazydog</password>
+                    
+    
+    </user>
+            
+    
+    <user>
+                        
+        
+        <username>snacks</username>
+                        
+        
+        <password>123</password>
+                    
+    
+    </user>
+            
+    
+    <user>
+                        
+        
+        <username>wolfgang</username>
+                        
+        
+        <password>puck</password>
+                    
+    
+    </user>
+            
+    
+    <user>
+                        
+        
+        <username>asdf</username>
+                        
+        
+        <password>123</password>
+                    
+    
+    </user>
+            
+    
+    <user>
+                        
+        
+        <username>jacques</username>
+                        
+        
+        <password>pepin</password>
+                    
+    
+    </user>
+        
+    
+    <user>
+                
+        <username>Wolfgang</username>
+                
+        <password>puck</password>
+            
+    </user>
+</users>
